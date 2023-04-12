@@ -16,36 +16,31 @@
 <form>
     <label for="DOB">Date of Birth :</label>
     <input type="date" id="DOB">
-    <button onclick="print()" id="result">submit</button>
+    <button  id="btn">submit</button>
+	<div id="result"></div>
 
 </form>
     <script>
-   
-    function print(){
+	let input=document.getElementById('DOB')
+	let button = document.getElementById("btn")
 
-   let input=document.getElementById('DOB').value; 
-
-   if(input===""){
-       let result=document.getElementById("result");
-         result.innerText="Enter a Date";
-   }
-
-   else {
-    let input=document.getElementById('DOB').value;
+   button.addEventListener("click", function(e){
+   e.preventDefault();
      let result=document.getElementById("result");
-      let date= new Date(input);
+      let date= new Date(input.value);
       let current=new Date();
 
-         let dateyear=date.getYear();
+         let dateyear=date.getFullYear();
            console.log(dateyear);
 
-        let currentyear=current.getYear();
+        let currentyear=current.getFullYear();
+		console.log(currentyear) 
 
         let yearresult=currentyear-dateyear;
 
-        document.write(yearresult);
-   }
-    }
+			result.innerText = "Age is " + yearresult;
+   
+    })
      
     </script>
 </body>
